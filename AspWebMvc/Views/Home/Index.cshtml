@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<AspWebMvc.Models.GrantType>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -8,6 +10,32 @@
 
 </div>
 
-<div class="row">
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GrantTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrantTypeDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrantTypeLifetimeMaximum)
+        </th>
 
-</div>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrantTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrantTypeDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrantTypeLifetimeMaximum)
+        </td>
+
+    </tr>
+    }
