@@ -29,6 +29,7 @@ namespace AspWebMvc.Controllers
                 int pKey = (int)uid;
                 Session["personKey"] = pKey;
 
+                //create message
                 Message msg = new Message();
                 msg.MessageText = "Thank You, " + lc.Username + "for logging in. You can now donate or apply for grants";
 
