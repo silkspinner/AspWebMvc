@@ -16,38 +16,38 @@ namespace AspWebMvc.Controllers
             return View();
         }
 
-        public ActionResult Result()
+        public ActionResult Result(Message m)
         {
-            return View();
+            return View(m);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "LastName, FirstName, Email, Phone, PlainPassword, Apartment, Street, City, State, Zipcode")]NewPerson p)
+        public ActionResult Index([Bind(Include = "LastName, FirstName, Email, PlainPassword, Apartment, Street, City, State, Zipcode, Phone")]NewPerson p)
         {
             int result = np.usp_Register(
                 p.LastName,
                 p.FirstName,
                 p.Email,
-                p.Phone,
                 p.PlainPassword,
                 p.Apartment,
                 p.Street,
                 p.City,
                 p.State,
-                p.Zipcode);
+                p.Zipcode,
+                p.Phone);
 
             if (result != -1)
             {
                 // Registration succeeded
 
                 Message msg = new Message();
-                msg.MessageText = "Thank You, " + p.FirstName + "for registering";
+                msg.MessageText = "Thank You, " + p.FirstName + " for registering";
                 return RedirectToAction("Result", msg);
             }
 
             Message msgInvalid = new Message();
-            msgInvalid.MessageText = "Registration Failed";
+            msgInvalid.MessageText = "Sorry, misaglignment of quantum entaglement occured, your registration failed";
             return View("Result", msgInvalid);
         }
     }

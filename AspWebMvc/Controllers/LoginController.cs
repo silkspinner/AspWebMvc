@@ -24,14 +24,14 @@ namespace AspWebMvc.Controllers
             if (loginresult != -1)
             {
                 var uid = (from p in db.People
-                           where p.PersonLastName.Equals(lc.Username)
+                           where p.PersonEmail.Equals(lc.Username)
                            select p.PersonKey).FirstOrDefault();
                 int pKey = (int)uid;
                 Session["personKey"] = pKey;
 
                 //create message
                 Message msg = new Message();
-                msg.MessageText = "Thank You, " + lc.Username + "for logging in. You can now donate or apply for grants";
+                msg.MessageText = "Thank You, " + lc.Username + " for logging in. You can now donate or apply for grants";
 
                 return RedirectToAction("Result", msg);
             }
