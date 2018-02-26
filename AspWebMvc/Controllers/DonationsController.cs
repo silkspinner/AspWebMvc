@@ -7,8 +7,7 @@ using AspWebMvc.Models;
 
 namespace AspWebMvc.Controllers
 {
-    
-    public class DonationsController : Controller
+        public class DonationsController : Controller
     {
         CommunityAssist2017Entities db = new CommunityAssist2017Entities();
         // GET: Donations
@@ -17,6 +16,7 @@ namespace AspWebMvc.Controllers
             if (Session["personKey"] == null)
             {
                 Message m = new Message();
+                m.MessageTitle = "Donations";
                 m.MessageText = "Must Be logged in make donations";
                 return RedirectToAction("Result", m);
             }
@@ -34,6 +34,7 @@ namespace AspWebMvc.Controllers
             db.SaveChanges();
 
             Message m = new Message();
+            m.MessageTitle = "Donations";
             m.MessageText = "Thank you, we are very grateful for your donation.";
             return RedirectToAction("Result", m);
         }

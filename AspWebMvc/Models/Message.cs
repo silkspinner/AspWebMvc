@@ -7,6 +7,7 @@ namespace AspWebMvc.Models
 {
     public class Message
     {
+        public string MessageTitle { set; get; }
         public string MessageText { set; get; }
     }
 }

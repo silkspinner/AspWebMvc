@@ -41,14 +41,16 @@ namespace AspWebMvc.Controllers
             {
                 // Registration succeeded
 
-                Message msg = new Message();
-                msg.MessageText = "Thank You, " + p.FirstName + " for registering";
-                return RedirectToAction("Result", msg);
+                Message m = new Message();
+                m.MessageTitle = "Registration";
+                m.MessageText = "Thank You, " + p.FirstName + " for registering";
+                return RedirectToAction("Result", m);
             }
 
-            Message msgInvalid = new Message();
-            msgInvalid.MessageText = "Sorry, misaglignment of quantum entaglement occured, your registration failed";
-            return View("Result", msgInvalid);
+            Message bad = new Message();
+            bad.MessageTitle = "Registration";
+            bad.MessageText = "Sorry, misaglignment of quantum entanglement occured, your registration failed";
+            return View("Result", bad);
         }
     }
 }

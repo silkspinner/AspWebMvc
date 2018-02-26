@@ -30,15 +30,17 @@ namespace AspWebMvc.Controllers
                 Session["personKey"] = pKey;
 
                 //create message
-                Message msg = new Message();
-                msg.MessageText = "Thank You, " + lc.Username + " for logging in. You can now donate or apply for grants";
+                Message m = new Message();
+                m.MessageTitle = "Login Results";
+                m.MessageText = "Thank You, " + lc.Username + " for logging in. You can now donate or apply for grants";
 
-                return RedirectToAction("Result", msg);
+                return RedirectToAction("Result", m);
             }
 
-            Message msgInvalid = new Message();
-            msgInvalid.MessageText = "Invalid Login";
-            return View("Result", msgInvalid);
+            Message bad = new Message();
+            bad.MessageTitle = "Login Results";
+            bad.MessageText = "Invalid Login";
+            return View("Result", bad);
         }
 
         public ActionResult Result(Message m)
